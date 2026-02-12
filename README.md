@@ -20,6 +20,7 @@ This repository serves as a centralized index for my Blue Team cybersecurity pro
 - 🔍 Security Information and Event Management (SIEM)
 - 🛡️ File Integrity Monitoring (FIM)
 - 🦠 Malware Detection & Analysis (YARA)
+- 🔍 Network Intrusion Detection (Suricata)
 - ⚡ Automated Threat Response
 - 🎯 MITRE ATT&CK Framework Mapping
 - 🔐 Windows & Linux Security Hardening
@@ -85,6 +86,37 @@ A collection of curated Wazuh configurations, troubleshooting guides, and best p
 
 [📖 View Project →](https://github.com/jmoreira01/WAZUH_YARA_Complete_Configuration)
 
+---
+
+#### 3. 🔍 [Suricata IDS Integration with Wazuh](https://github.com/jmoreira01/suricata-ids-integration)
+
+**Network Intrusion Detection with Suricata integrated into Wazuh SIEM**
+
+Implementation of a Network Intrusion Detection System (NIDS) using Suricata, fully integrated with Wazuh for centralized monitoring, alert correlation, and automated threat response.
+
+**Key Features:**
+- ✅ Suricata 8.0.3 NIDS with Emerging Threats ruleset
+- ✅ Real-time network traffic analysis and alerting
+- ✅ Wazuh SIEM integration for centralized alert correlation
+- ✅ Active Response — automated IP blocking on NMAP detection
+- ✅ Multi-vector detection combining NIDS + HIDS
+- ✅ Comprehensive troubleshooting documentation
+
+**Technologies:** Suricata 8.0.3 | Wazuh SIEM | Ubuntu 22.04 | Kali Linux | NMAP | GoldenEye
+
+**Attack Scenarios Tested:**
+- NMAP Vulnerability Scanning (T1595.002) — 3,539 alerts generated
+- GoldenEye HTTP DoS (T1499) — Agent queue saturation detected
+- Automated NMAP blocking via Active Response (<5 sec response)
+
+**Detection Highlights:**
+- Suricata ET SCAN rules detected NMAP scripting engine
+- Wazuh correlated network alerts with application-layer errors
+- Indirect DoS indicators identified through agent queue monitoring
+
+[📖 View Project →](https://github.com/jmoreira01/suricata-ids-integration)
+
+---
 
 ## 🛠️ Technical Stack
 
@@ -113,8 +145,9 @@ A collection of curated Wazuh configurations, troubleshooting guides, and best p
 - Alert tuning and false positive reduction
 
 ✅ **Threat Detection**
-- Signature-based detection (YARA)
+- Signature-based detection (YARA, Suricata)
 - Anomaly detection (FIM)
+- Network intrusion detection (NIDS)
 - Behavioral analysis
 - IOC identification
 
@@ -126,6 +159,7 @@ A collection of curated Wazuh configurations, troubleshooting guides, and best p
 
 ✅ **Security Architecture**
 - SIEM deployment and configuration
+- IDS/NIDS integration
 - Multi-platform agent management
 - Network segmentation awareness
 - Defense in depth strategies
@@ -144,6 +178,8 @@ A collection of curated Wazuh configurations, troubleshooting guides, and best p
 
 | Tactic | Technique | ID | Implementation |
 |--------|-----------|-----|----------------|
+| **Reconnaissance** | Active Scanning: Vulnerability Scanning | T1595.002 | Suricata NMAP detection + Active Response |
+| **Reconnaissance** | Active Scanning: Scanning IP Blocks | T1595.001 | Suricata network monitoring |
 | **Credential Access** | Brute Force: Password Guessing | T1110.001 | SSH/RDP monitoring + blocking |
 | **Initial Access** | Exploit Public-Facing App | T1190 | Apache log analysis, SQL injection detection |
 | **Execution** | User Execution: Malicious File | T1204.002 | YARA malware scanning |
@@ -151,6 +187,8 @@ A collection of curated Wazuh configurations, troubleshooting guides, and best p
 | **Command & Control** | Application Layer Protocol | T1071 | IP reputation blocking |
 | **Persistence** | Create Account | T1136 | Account creation monitoring |
 | **Discovery** | System Information Discovery | T1082 | System log analysis |
+| **Impact** | Endpoint Denial of Service | T1499 | Suricata + agent queue monitoring |
+| **Impact** | Network Denial of Service | T1498 | Suricata traffic anomaly detection |
 
 ---
 
@@ -161,7 +199,8 @@ A collection of curated Wazuh configurations, troubleshooting guides, and best p
 ```
 Wazuh Configuration    ████████████████████░  95%
 YARA Integration       ██████████████████░░  90%
-Active Response        ████████████████░░░░  85%
+Suricata IDS           ████████████████████░  95%
+Active Response        █████████████████░░░  88%
 FIM Implementation     ████████████████████░  95%
 Docker Deployment      ██████████████░░░░░░  75%
 Custom Rule Writing    ████████████████░░░░  85%
@@ -183,11 +222,13 @@ Documentation          ███████████████████
 - ✅ Security Monitoring & Logging
 - ✅ Malware Analysis Fundamentals
 - ✅ Network Security Monitoring
+- ✅ Network Intrusion Detection (Suricata)
 
 **Key Achievements:**
 - 100% detection rate on all security labs
 - Developed 15+ custom Wazuh detection rules
 - Implemented automated response for 5+ attack types
+- Integrated Suricata NIDS with Wazuh for multi-layer detection
 - Completed comprehensive MITRE ATT&CK mapping
 - Created bilingual technical documentation
 
@@ -198,6 +239,7 @@ Documentation          ███████████████████
 
 - 🏢 [SIEM LAB Implementation](https://github.com/jmoreira01/siem-lab-project)
 - 📚 [Wazuh Configuration Guides & Best Practices](https://github.com/jmoreira01/WAZUH_YARA_Complete_Configuration)
+- 🔍 [Suricata IDS Integration with Wazuh](https://github.com/jmoreira01/suricata-ids-integration)
 
 ### Professional Profiles
 
@@ -209,6 +251,7 @@ Documentation          ███████████████████
 
 **Official Documentation:**
 - [Wazuh Documentation](https://documentation.wazuh.com)
+- [Suricata Documentation](https://docs.suricata.io/)
 - [MITRE ATT&CK](https://attack.mitre.org)
 - [YARA Documentation](https://yara.readthedocs.io)
 
